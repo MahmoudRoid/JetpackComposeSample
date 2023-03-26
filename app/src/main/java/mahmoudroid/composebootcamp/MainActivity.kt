@@ -43,8 +43,8 @@ fun MyApp() {
 
             Text(text = "${moneyCount.value} $")
             Spacer(modifier = Modifier.height(90.dp))
-            CreateCircle(moneyCount.value){
-                moneyCount.value = it
+            CreateCircle(){
+                moneyCount.value += 10
             }
 
         }
@@ -54,8 +54,8 @@ fun MyApp() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun CreateCircle(counter: Int = 100, updateCounter: (Int) -> Unit) {
-
+private fun CreateCircle(updateCounter: () -> Unit) {
+    Log.i("TAG", "CreateCircle: ")
     Card(
         elevation = CardDefaults.cardElevation(4.dp),
         modifier = Modifier
@@ -65,7 +65,7 @@ private fun CreateCircle(counter: Int = 100, updateCounter: (Int) -> Unit) {
         colors = CardDefaults.cardColors(Color.Cyan),
         onClick = {
             Log.i("TAG", "CreateCircle: onClick")
-            updateCounter.invoke(counter + 10)
+            updateCounter.invoke()
         }
     ) {
 
@@ -74,6 +74,12 @@ private fun CreateCircle(counter: Int = 100, updateCounter: (Int) -> Unit) {
         }
     }
 
+}
+
+@Composable
+fun Alaki() {
+    Log.i("TAG", "Alaki: ")
+    Text(text = "hello")
 }
 
 
