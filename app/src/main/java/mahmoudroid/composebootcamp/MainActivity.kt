@@ -76,12 +76,6 @@ private fun CreateCircle(updateCounter: () -> Unit) {
 
 }
 
-@Composable
-fun Alaki() {
-    Log.i("TAG", "Alaki: ")
-    Text(text = "hello")
-}
-
 
 
 @Preview(showBackground = true)
