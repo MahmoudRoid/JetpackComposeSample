@@ -1,9 +1,11 @@
 package mahmoudroid.composebootcamp.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import mahmoudroid.composebootcamp.screens.DetailScreen
 import mahmoudroid.composebootcamp.screens.HomeScreen
 
@@ -17,9 +19,17 @@ fun MovieNavigation() {
             HomeScreen(navController)
         }
         
-        composable(MovieScreens.DetailScreen.name){
+        composable(
+            MovieScreens.DetailScreen.name + "/{movie}",
+            arguments = listOf(
+              navArgument(name = "movie"){
+                  type = NavType.StringType
+              }
+            )
+        ){
+            backStackEntry ->
             // show detail screen
-            DetailScreen(navController = navController)
+            DetailScreen(navController = navController, backStackEntry.arguments?.getString("movie"))
         }
 
     }
