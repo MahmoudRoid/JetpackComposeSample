@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.magnifier
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -15,6 +16,7 @@ import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -96,39 +98,65 @@ fun MovieRowItem(
 
             Column(modifier = Modifier.padding(4.dp)) {
                 Text(text = item.title, style = MaterialTheme.typography.headlineSmall)
-                Text(text = "Director : ${item.director}", style = MaterialTheme.typography.labelSmall)
+                Text(
+                    text = "Director : ${item.director}",
+                    style = MaterialTheme.typography.labelSmall
+                )
                 Text(text = "Released: ${item.year}", style = MaterialTheme.typography.labelSmall)
 
                 AnimatedVisibility(visible = expanded) {
-                    
+
                     Column {
-                        Text(text = buildAnnotatedString {
 
-                            withStyle(
-                                style = SpanStyle(
-                                    color = Color.DarkGray,
-                                    fontSize = 13.sp
-                                )
-                            ){
-                                append(" Plot: ")
-                            }
+                        Text(
+                            text = buildAnnotatedString {
 
-                            withStyle(
-                                style = SpanStyle(
-                                    color = Color.DarkGray,
-                                    fontSize = 13.sp,
-                                    fontWeight = FontWeight.Bold
-                                )
-                            ){
-                                append(item.plot)
-                            }
+                                withStyle(
+                                    style = SpanStyle(
+                                        color = Color.DarkGray,
+                                        fontSize = 13.sp
+                                    )
+                                ) {
+                                    append(" Plot: ")
+                                }
 
-                        })
+                                withStyle(
+                                    style = SpanStyle(
+                                        color = Color.DarkGray,
+                                        fontSize = 13.sp,
+                                        fontWeight = FontWeight.Light
+                                    )
+                                ) {
+                                    append(item.plot)
+                                }
+
+                            },
+                            modifier = Modifier.padding(6.dp)
+                        )
+
+                        Divider(modifier = Modifier.padding(6.dp))
+
+                        Text(
+                            text = "Director: ${item.director}",
+                            style = MaterialTheme.typography.labelSmall
+                        )
+
+                        Text(
+                            text = "Actors: ${item.actors}",
+                            style = MaterialTheme.typography.labelSmall
+                        )
+
+                        Text(
+                            text = "Rating: ${item.rating}",
+                            style = MaterialTheme.typography.labelSmall
+                        )
+
                     }
-                    
+
                 }
 
-                Icon(imageVector = if (expanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
+                Icon(
+                    imageVector = if (expanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
                     contentDescription = "",
                     tint = Color.DarkGray,
                     modifier = Modifier
@@ -136,7 +164,7 @@ fun MovieRowItem(
                         .clickable {
                             expanded = !expanded
                         },
-                    )
+                )
             }
 
 
