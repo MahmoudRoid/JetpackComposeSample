@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Compose Bootcamp</string>
+    <string name="note_app">Note App</string>
+    <string name="save">save</string>
 </resources>
