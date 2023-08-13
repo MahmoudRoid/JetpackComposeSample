@@ -160,7 +160,7 @@ fun NoteRow(
         ) {
             Text(text = note.title, style = MaterialTheme.typography.titleSmall)
             Text(text = note.description, style = MaterialTheme.typography.bodyMedium)
-            Text(text = note.date.toString(), style = MaterialTheme.typography.bodySmall)
+            Text(text = note.date, style = MaterialTheme.typography.bodySmall)
         }
     }
 
